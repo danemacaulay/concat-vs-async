@@ -21,7 +21,9 @@ In one version each file is loaded asynchronously using the async script attribu
 
 In the other each file is concatenated and loaded with one request
 
-The times displayed for the concatenated version of this test are within a much smaller range when compared to unconcatenated.
+The times displayed for the concatenated version of this test are within a much smaller range than when compared to unconcatenated.
+
+This test is run under optimal network conditions, with no real header payload, practically no latency, and high bandwidth. In real world conditions, all of these factors spread over each request can push page load time higher and higher.
 
 ## Installation
 
@@ -40,21 +42,19 @@ open browser to [http://localhost:3000/](http://localhost:3000/) and [http://loc
 
 ## Bulk updating scripts
 
-If you'd like to play around with the test, you can  update ``template.js`` with changes, then run 
+If you'd like to play around with the test, you can create any number of files with the ``createFiles.js`` script
 
-```bash
-node templateCopy
-```
-
-Then concat the scripts:
+Or just update ``template.js`` with changes, then run the ``templateCopy.js`` script
 
 ## Concatenating scripts
 
-A node script that uses a small node library called node-minify to concat the files
+Run the node script ``concat.js``
 
-The library also provides support for other build tasks inlcuding uglify 
+Its only dependency is a small node library called node-minify that is used to concat the files, it also provides support for other build tasks including uglify. 
+
+Before running, install it locally:
 
 ```bash
-node concat
+cd concat-vs-async
+npm install
 ```
-
