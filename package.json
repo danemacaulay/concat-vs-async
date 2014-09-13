@@ -1,0 +1,14 @@
+{
+  "name": "pudding",
+  "version": "0.0.0",
+  "description": "",
+  "main": "build.js",
+  "scripts": {
+    "test": "node templateCopy.js"
+  },
+  "author": "Dane Macaulay <dane.macaulay@gmail.com> (https://github.com/danemacaulay)",
+  "license": "ISC",
+  "dependencies": {
+    "node-minify": "^0.10.5"
+  }
+}
