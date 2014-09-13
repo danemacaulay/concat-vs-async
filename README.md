@@ -21,11 +21,11 @@ In one version each file is loaded asynchronously using the async script attribu
 
 In the other each file is concatenated and loaded with one request
 
-[http://danemacaulay.github.io/concat-vs-async/](Side by side)
+[Side by side](http://danemacaulay.github.io/concat-vs-async/)
 
-[http://danemacaulay.github.io/concat-vs-async/index-async.html](Async)
+[Async](http://danemacaulay.github.io/concat-vs-async/index-async.html)
 
-[http://danemacaulay.github.io/concat-vs-async/index-concat.html](Concat)
+[Concat](http://danemacaulay.github.io/concat-vs-async/index-concat.html)
 
 
 ## Results (local)
@@ -33,7 +33,7 @@ In the other each file is concatenated and loaded with one request
 |          | Initial Request   | Cached Request |
 |----------|-------------------|----------------|
 | Async    | ~ 30 ms - 50 ms   | ~ 4 ms         |
-| Concat   | ~ 2 ms - ~ 4 ms   | ~ 1 ms         |
+| Concat   | ~ 2 ms - 4 ms     | ~ 1 ms         |
 
 ### Considerations
 This test is run under optimal network conditions, with no real header payload, practically no latency, and high bandwidth. In real world conditions, all of these factors spread over each request push page load time higher and higher.
