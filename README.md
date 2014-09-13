@@ -23,9 +23,13 @@ In the other each file is concatenated and loaded with one request
 
 ## Results 
 
-The times displayed for the concatenated version of this test are within a much smaller range than when compared to unconcatenated.
+|        | Initial Request | Cached Request |
+|--------|-----------------|----------------|
+| Async  | ~ 50 ms         | ~ 4 ms         |
+| Concat | ~ 4 ms          | ~ 1 ms         |
 
-This test is run under optimal network conditions, with no real header payload, practically no latency, and high bandwidth. In real world conditions, all of these factors spread over each request can push page load time higher and higher.
+### Considerations
+This test is run under optimal network conditions, with no real header payload, practically no latency, and high bandwidth. In real world conditions, all of these factors spread over each request push page load time higher and higher.
 
 ## Installation
 
