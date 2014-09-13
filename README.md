@@ -21,7 +21,14 @@ In one version each file is loaded asynchronously using the async script attribu
 
 In the other each file is concatenated and loaded with one request
 
-## Results 
+[http://danemacaulay.github.io/concat-vs-async/](Side by side)
+
+[http://danemacaulay.github.io/concat-vs-async/index-async.html](Async)
+
+[http://danemacaulay.github.io/concat-vs-async/index-concat.html](Concat)
+
+
+## Results (local)
 
 |          | Initial Request   | Cached Request |
 |----------|-------------------|----------------|
