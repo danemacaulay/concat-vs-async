@@ -21,6 +21,8 @@ In one version each file is loaded asynchronously using the async script attribu
 
 In the other each file is concatenated and loaded with one request
 
+## Results 
+
 The times displayed for the concatenated version of this test are within a much smaller range than when compared to unconcatenated.
 
 This test is run under optimal network conditions, with no real header payload, practically no latency, and high bandwidth. In real world conditions, all of these factors spread over each request can push page load time higher and higher.
