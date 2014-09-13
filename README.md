@@ -23,10 +23,10 @@ In the other each file is concatenated and loaded with one request
 
 ## Results 
 
-|        | Initial Request | Cached Request |
-|--------|-----------------|----------------|
-| Async  | ~ 50 ms         | ~ 4 ms         |
-| Concat | ~ 4 ms          | ~ 1 ms         |
+|          | Initial Request   | Cached Request |
+|----------|-------------------|----------------|
+| Async    | ~ 30 ms - 50 ms   | ~ 4 ms         |
+| Concat   | ~ 2 ms - ~ 4 ms   | ~ 1 ms         |
 
 ### Considerations
 This test is run under optimal network conditions, with no real header payload, practically no latency, and high bandwidth. In real world conditions, all of these factors spread over each request push page load time higher and higher.
@@ -44,7 +44,7 @@ cd concat-vs-async
 serve
 ```
 
-open browser to [http://localhost:3000/](http://localhost:3000/) and [http://localhost:3000/index-build.html](http://localhost:3000/index-build.html)
+open browser to [http://localhost:3000/index-async.html](http://localhost:3000/index-async.html) and [http://localhost:3000/index-concat.html](http://localhost:3000/index-concat.html)
 
 ## Bulk updating scripts
 
