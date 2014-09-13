@@ -48,7 +48,7 @@ open browser to [http://localhost:3000/](http://localhost:3000/) and [http://loc
 
 ## Bulk updating scripts
 
-If you'd like to play around with the test, you can create any number of files with the ``createFiles.js`` script
+If you'd like to play around with the test, you can create any number of files with the ``createFiles.js`` script, just remember to also update the script tags
 
 Or just update ``template.js`` with changes, then run the ``templateCopy.js`` script
 
