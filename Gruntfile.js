@@ -1,6 +1,8 @@
-/*global module: true, require: true, __dirname: true */
+/*global module: true, require: true */
 var utils = require('./utils');
 module.exports = function(grunt) {
+    'use strict';
+
     grunt.loadNpmTasks('grunt-scriptlinker');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-clean');
@@ -21,7 +23,7 @@ module.exports = function(grunt) {
         },
         // serve static assets
         connect: {
-            uses_defaults: {},
+            'uses_defaults': {},
         },
         scriptlinker: {
             async: {
@@ -39,5 +41,5 @@ module.exports = function(grunt) {
                 dest: 'build/build.js',
             },
         },
-    })
+    });
 };
