@@ -3,7 +3,12 @@
 
 A POC to demonstrate efficiency gains of script concatenation vs async script loading
 
-25 mock files are loaded on a page and run the following javascript
+## Live demo
+
+[Async vs Concat](http://danemacaulay.github.io/concat-vs-async/)
+
+## Methodology
+60 mock files are loaded on a page and run the following javascript
 
 ```js
 (function(){
@@ -17,59 +22,57 @@ A POC to demonstrate efficiency gains of script concatenation vs async script lo
 })();
 ```
 
-In one version each file is loaded asynchronously using the async script attribute
+Each script will display the millisecond it was evaluated;
 
-In the other each file is concatenated and loaded with one request
+### Async
+Each file is loaded asynchronously using the async script attribute
 
-## Live demo
+### Concat
+All of the async files are concatenated and loaded with one request
 
-[Side by side](http://danemacaulay.github.io/concat-vs-async/)
+### Measuring
+There are two event callbacks per page, one on the ``DomContentLoaded`` event, the other is the load event for each script tag.
 
-[Async](http://danemacaulay.github.io/concat-vs-async/index-async.html)
+With async attributes, the DomContentLoaded event fires fast, the time that we care most about is when the final script is fully loaded.
 
-[Concat](http://danemacaulay.github.io/concat-vs-async/index-concat.html)
+Times are calculated using the method described on MDN for [calculating load times](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#Example:_Calculating_elapsed_time)
 
+```js
+// using Date objects
+var start = Date.now();
 
-## Results (local)
+// the event to time goes here:
+doSomethingForALongTime();
+var end = Date.now();
+var elapsed = end - start; // elapsed time in milliseconds
 
-|          | Initial Pageload    | Cached         |
-|----------|---------------------|----------------|
-| Async    | ~ 20 ms - 50 ms     | ~ 4 ms         |
-| Concat   | ~ 2 ms - 4 ms       | ~ 1 ms         |
+```
 
-### Considerations
-This test is run under optimal network conditions, with no real header payload, practically no latency, and high bandwidth. In real world conditions, all of these factors spread over each request push page load time higher and higher.
+After 20 seconds, the time it took the last script to load with be logged to console.
+
+## Results
+
+### Local
+
+Concat will clearly load faster with the same code base, but I was interested to see where the two would reach load time parity. 
+
+I multiplied the size of the concat payload several times, finally reaching parity around 60x the original payload size, or about 829K.
+
+### Served remotely
+
+Serving files over the network adds much more overhead to requests. The 60x payload loads 4-5 times faster.
+
+## Considerations
+
+This only demonstrates simple code, the main focus however is to demonstrate the effect of HTTP requests on page load time. Concatenation clearly wins.
 
 ## Installation
 
 ```bash
-npm install -g serve
-```
-
-## Running
-
-```bash
-cd concat-vs-async
-serve
-```
-
-open browser to [http://localhost:3000/index-async.html](http://localhost:3000/index-async.html) and [http://localhost:3000/index-concat.html](http://localhost:3000/index-concat.html)
-
-## Bulk updating scripts
-
-If you'd like to play around with the test, you can create any number of files with the ``createFiles.js`` script, just remember to also update the script tags
-
-Or just update ``template.js`` with changes, then run the ``templateCopy.js`` script
-
-## Concatenating scripts
-
-Run the node script ``concat.js``
-
-Its only dependency is a small node library called node-minify that is used to concat the files, it also provides support for other build tasks including uglify. 
-
-Before running, install it locally:
-
-```bash
-cd concat-vs-async
 npm install
+grunt build:60
 ```
+
+The build task will create the files based on ``template.js``, update the async page scripts and concatenate the files for the concat page. 
+
+Content is served at [http://localhost:8000](http://localhost:8000)
