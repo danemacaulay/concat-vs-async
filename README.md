@@ -1,7 +1,7 @@
 
 # Concat vs Async
 
-A POC to demonstrate efficiency gains of script concatenation vs async script loading
+A POC to demonstrate efficiency gains of script concatenation vs async script loading. For a higher level analysis see this article by the hubspot team, [Async != Fast](http://dev.hubspot.com/blog/async-fast)
 
 ## Live demo
 
